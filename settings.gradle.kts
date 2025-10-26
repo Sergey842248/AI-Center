@@ -22,5 +22,5 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "SwitchAI"
+rootProject.name = "AI-Center"
 include(":app")
