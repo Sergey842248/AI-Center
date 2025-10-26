@@ -14,15 +14,33 @@ class ChatGPTAssistant : AssistantActivity() {
     }
 
     override fun onCreateInternal() {
-        openAssistant(
-            intents = listOf(createChatGPTIntent()),
-            errorMessage = R.string.assistant_application_not_found
-        )
+        onCreateInternal(false)
+    }
+
+    override fun onCreateInternal(launchVoiceAssistant: Boolean) {
+        if (launchVoiceAssistant) {
+            // Try voice assistant first, fallback to main activity if not available
+            openAssistant(
+                intents = listOf(createChatGPTVoiceIntent(), createChatGPTIntent()),
+                errorMessage = R.string.assistant_application_not_found
+            )
+        } else {
+            openAssistant(
+                intents = listOf(createChatGPTIntent()),
+                errorMessage = R.string.assistant_application_not_found
+            )
+        }
     }
 
     private fun createChatGPTIntent() = Intent().apply {
         component = ComponentName(
-            Companion.packageName, "com.openai.chatgpt.MainActivity"
+            Companion.packageName, "com.openai.voice.assistant.AssistantActivity"
+        )
+    }
+
+    private fun createChatGPTVoiceIntent() = Intent().apply {
+        component = ComponentName(
+            Companion.packageName, "com.openai.chatgpt.VoiceActivity"
         )
     }
 }

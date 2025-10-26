@@ -14,13 +14,30 @@ class AlexaAssistant : AssistantActivity() {
     }
 
     override fun onCreateInternal() {
-        openAssistant(
-            intents = listOf(createAlexaIntent()),
-            errorMessage = R.string.assistant_application_not_found
-        )
+        onCreateInternal(false)
+    }
+
+    override fun onCreateInternal(launchVoiceAssistant: Boolean) {
+        if (launchVoiceAssistant) {
+            openAssistant(
+                intents = listOf(createAlexaVoiceIntent()),
+                errorMessage = R.string.assistant_application_not_found
+            )
+        } else {
+            openAssistant(
+                intents = listOf(createAlexaIntent()),
+                errorMessage = R.string.assistant_application_not_found
+            )
+        }
     }
 
     private fun createAlexaIntent() = Intent().apply {
+        component = ComponentName(
+            Companion.packageName, "com.amazon.alexa.main.MainActivity"
+        )
+    }
+
+    private fun createAlexaVoiceIntent() = Intent().apply {
         component = ComponentName(
             Companion.packageName, "com.amazon.alexa.voice.ui.VoiceActivity"
         )

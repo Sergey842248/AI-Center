@@ -30,5 +30,12 @@ class SwitchAI : Application(), SharedPreferences.OnSharedPreferenceChangeListen
         if (key == Constants.DIGITAL_ASSISTANT_SELECT_PREF_KEY) {
             shortcuts.updateDynamicShortcuts()
         }
+
+        // Update shortcuts when any preference changes that might affect them
+        if (key?.endsWith("_launch_switch") == true ||
+            key == Constants.ASSISTANT_SELECTOR_DIALOG_PREF_KEY ||
+            key == Constants.ASSISTANT_SEARCH_BAR_PREF_KEY) {
+            shortcuts.updateDynamicShortcuts()
+        }
     }
 }

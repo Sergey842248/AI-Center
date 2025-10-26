@@ -104,11 +104,51 @@ class AssistantSelectorBottomSheet : BaseBottomSheet<FragmentAssistantDialogBind
 
     private fun openAssistant(assistantKey: String) {
         val context = this.context ?: return
+
+        // Check if launch switch is enabled for this assistant
+        val launchSwitchKey = getLaunchSwitchKey(assistantKey)
+        val isLaunchSwitchEnabled = launchSwitchKey != null &&
+            preferenceHelper.getBoolean(launchSwitchKey, false)
+
         AssistantsMap.assistantActivity[assistantKey]?.let { activityClass ->
             val intent = Intent(context, activityClass).apply {
                 flags = Intent.FLAG_ACTIVITY_NEW_TASK
+                // Pass information about whether to launch voice assistant
+                putExtra("LAUNCH_VOICE_ASSISTANT", isLaunchSwitchEnabled)
             }
             context.startActivity(intent)
         } ?: Toast.makeText(context, R.string.assistant_open_error, Toast.LENGTH_SHORT).show()
+    }
+
+    private fun getLaunchSwitchKey(assistantKey: String): String? {
+        return when (assistantKey) {
+            "chatgpt_assistant" -> Constants.CHATGPT_LAUNCH_SWITCH
+            "claude_assistant" -> Constants.CLAUDE_LAUNCH_SWITCH
+            "alexa_assistant" -> Constants.ALEXA_LAUNCH_SWITCH
+            "alice_assistant" -> Constants.ALICE_LAUNCH_SWITCH
+            "copilot_assistant" -> Constants.COPILOT_LAUNCH_SWITCH
+            "deepseek_assistant" -> Constants.DEEPSEEK_LAUNCH_SWITCH
+            "doubao_assistant" -> Constants.DOUBAO_LAUNCH_SWITCH
+            "gemini_assistant" -> Constants.GEMINI_LAUNCH_SWITCH
+            "grok_assistant" -> Constants.GROK_LAUNCH_SWITCH
+            "home_assistant" -> Constants.HOME_LAUNCH_SWITCH
+            "kimi_assistant" -> Constants.KIMI_LAUNCH_SWITCH
+            "le_chat_assistant" -> Constants.LE_CHAT_LAUNCH_SWITCH
+            "lumo_assistant" -> Constants.LUMO_LAUNCH_SWITCH
+            "manus_assistant" -> Constants.MANUS_LAUNCH_SWITCH
+            "marusya_assistant" -> Constants.MARUSYA_LAUNCH_SWITCH
+            "meta_assistant" -> Constants.META_LAUNCH_SWITCH
+            "minimax_assistant" -> Constants.MINIMAX_LAUNCH_SWITCH
+            "delphi_assistant" -> Constants.DELPHI_LAUNCH_SWITCH
+            "perplexity_assistant" -> Constants.PERPLEXITY_LAUNCH_SWITCH
+            "qingyan_assistant" -> Constants.QINGYAN_LAUNCH_SWITCH
+            "qwen_assistant" -> Constants.QWEN_LAUNCH_SWITCH
+            "ultimate_alexa_assistant" -> Constants.ULTIMATE_ALEXA_LAUNCH_SWITCH
+            "venice_assistant" -> Constants.VENICE_LAUNCH_SWITCH
+            "wenxin_yiyan_assistant" -> Constants.WENXIN_YIYAN_LAUNCH_SWITCH
+            "yuanbao_assistant" -> Constants.YUANBAO_LAUNCH_SWITCH
+            "zapia_assistant" -> Constants.ZAPIA_LAUNCH_SWITCH
+            else -> null
+        }
     }
 }

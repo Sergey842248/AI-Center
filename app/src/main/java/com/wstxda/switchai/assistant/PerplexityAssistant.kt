@@ -14,15 +14,33 @@ class PerplexityAssistant : AssistantActivity() {
     }
 
     override fun onCreateInternal() {
-        openAssistant(
-            intents = listOf(createPerplexityIntent()),
-            errorMessage = R.string.assistant_application_not_found
-        )
+        onCreateInternal(false)
+    }
+
+    override fun onCreateInternal(launchVoiceAssistant: Boolean) {
+        if (launchVoiceAssistant) {
+            // Try voice assistant first, fallback to main activity if not available
+            openAssistant(
+                intents = listOf(createPerplexityVoiceIntent(), createPerplexityIntent()),
+                errorMessage = R.string.assistant_application_not_found
+            )
+        } else {
+            openAssistant(
+                intents = listOf(createPerplexityIntent()),
+                errorMessage = R.string.assistant_application_not_found
+            )
+        }
     }
 
     private fun createPerplexityIntent() = Intent().apply {
         component = ComponentName(
             Companion.packageName, "ai.perplexity.app.android.ui.main.MainActivity"
+        )
+    }
+
+    private fun createPerplexityVoiceIntent() = Intent().apply {
+        component = ComponentName(
+            Companion.packageName, "ai.perplexity.app.android.assistant.VoiceActivity"
         )
     }
 }

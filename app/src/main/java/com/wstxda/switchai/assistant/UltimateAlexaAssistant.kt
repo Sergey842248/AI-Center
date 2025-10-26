@@ -14,15 +14,33 @@ class UltimateAlexaAssistant : AssistantActivity() {
     }
 
     override fun onCreateInternal() {
-        openAssistant(
-            intents = listOf(createUltimateAlexaIntent()),
-            errorMessage = R.string.assistant_application_not_found
-        )
+        onCreateInternal(false)
+    }
+
+    override fun onCreateInternal(launchVoiceAssistant: Boolean) {
+        if (launchVoiceAssistant) {
+            // Try voice assistant first, fallback to main activity if not available
+            openAssistant(
+                intents = listOf(createUltimateAlexaVoiceIntent(), createUltimateAlexaIntent()),
+                errorMessage = R.string.assistant_application_not_found
+            )
+        } else {
+            openAssistant(
+                intents = listOf(createUltimateAlexaIntent()),
+                errorMessage = R.string.assistant_application_not_found
+            )
+        }
     }
 
     private fun createUltimateAlexaIntent() = Intent().apply {
         component = ComponentName(
             Companion.packageName, "com.customsolutions.android.alexa.MainActivity"
+        )
+    }
+
+    private fun createUltimateAlexaVoiceIntent() = Intent().apply {
+        component = ComponentName(
+            Companion.packageName, "com.customsolutions.android.alexa.VoiceActivity"
         )
     }
 }

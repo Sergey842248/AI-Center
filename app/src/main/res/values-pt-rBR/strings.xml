@@ -40,6 +40,7 @@
     <string name="pref_category_shortcuts">Atalhos</string>
     <string name="pref_category_about">Sobre</string>
     <string name="pref_category_behavior">Comportamento</string>
+    <string name="pref_category_launch_switches">Modo de Inicialização do Assistente</string>
 
     <string name="pref_developer">Desenvolvedor</string>
     <string name="pref_source_code">Repositório com o código fonte</string>
@@ -79,6 +80,10 @@
 
     <string name="pref_assistant_root">Usar permissão root</string>
     <string name="pref_assistant_root_summary">Usar permissão root para ativar a entrada de voz em assistentes específicos e melhorar a usabilidade</string>
+
+    <!-- AI Launch Switches -->
+    <string name="pref_launch_switch">Modo assistente de voz</string>
+    <string name="pref_launch_switch_summary">Quando ativado, este assistente abrirá seu recurso de assistente de voz diretamente quando selecionado no menu</string>
 
     <!--theme selector-->
 

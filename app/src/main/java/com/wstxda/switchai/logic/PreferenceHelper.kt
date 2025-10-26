@@ -21,6 +21,10 @@ class PreferenceHelper(context: Context) {
         preferences.edit { putString(key, value) }
     }
 
+    fun putBoolean(key: String, value: Boolean) {
+        preferences.edit { putBoolean(key, value) }
+    }
+
     fun registerListener(listener: SharedPreferences.OnSharedPreferenceChangeListener) {
         preferences.registerOnSharedPreferenceChangeListener(listener)
     }

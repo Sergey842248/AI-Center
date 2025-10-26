@@ -20,8 +20,12 @@ class GeminiAssistant : AssistantActivity() {
     }
 
     override fun onCreateInternal() {
+        onCreateInternal(false)
+    }
+
+    override fun onCreateInternal(launchVoiceAssistant: Boolean) {
         lifecycleScope.launch {
-            if (preferences.getBoolean(Constants.ASSISTANT_ROOT_PREF_KEY)) {
+            if (launchVoiceAssistant || preferences.getBoolean(Constants.ASSISTANT_ROOT_PREF_KEY)) {
                 openGeminiFloaty()
             } else {
                 openGemini()

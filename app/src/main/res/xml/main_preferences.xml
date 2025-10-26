@@ -56,6 +56,7 @@
         app:minSelection="2"
         app:summary="@string/pref_assistant_manage_summary" />
 
+
     <PreferenceCategory
         android:layout="@layout/preference_material_category"
         android:title="@string/pref_category_behavior"
@@ -107,6 +108,72 @@
 
     <PreferenceCategory
         android:layout="@layout/preference_material_category"
+        android:title="@string/pref_category_launch_switches"
+        app:allowDividerAbove="false" />
+
+    <SwitchPreferenceCompat
+        android:defaultValue="false"
+        android:key="alexa_launch_switch"
+        android:layout="@layout/preference_material_top"
+        android:summary="@string/pref_launch_switch_summary"
+        android:title="@string/alexa"
+        app:icon="@drawable/ic_assistant_alexa"
+        app:iconSpaceReserved="false" />
+
+
+
+    <SwitchPreferenceCompat
+        android:defaultValue="false"
+        android:key="chatgpt_launch_switch"
+        android:layout="@layout/preference_material_middle"
+        android:summary="@string/pref_launch_switch_summary"
+        android:title="@string/chatgpt"
+        app:icon="@drawable/ic_assistant_chatgpt"
+        app:iconSpaceReserved="false" />
+
+
+
+    <SwitchPreferenceCompat
+        android:defaultValue="false"
+        android:key="copilot_launch_switch"
+        android:layout="@layout/preference_material_middle"
+        android:summary="@string/pref_launch_switch_summary"
+        android:title="@string/copilot"
+        app:icon="@drawable/ic_assistant_copilot"
+        app:iconSpaceReserved="false" />
+
+    <SwitchPreferenceCompat
+        android:defaultValue="false"
+        android:key="gemini_launch_switch"
+        android:layout="@layout/preference_material_middle"
+        android:summary="@string/pref_launch_switch_summary"
+        android:title="@string/gemini"
+        app:icon="@drawable/ic_assistant_gemini"
+        app:iconSpaceReserved="false" />
+
+
+
+    <SwitchPreferenceCompat
+        android:defaultValue="false"
+        android:key="perplexity_launch_switch"
+        android:layout="@layout/preference_material_middle"
+        android:summary="@string/pref_launch_switch_summary"
+        android:title="@string/perplexity"
+        app:icon="@drawable/ic_assistant_perplexity"
+        app:iconSpaceReserved="false" />
+
+
+    <SwitchPreferenceCompat
+        android:defaultValue="false"
+        android:key="ultimate_alexa_launch_switch"
+        android:layout="@layout/preference_material_middle"
+        android:summary="@string/pref_launch_switch_summary"
+        android:title="@string/ultimate_alexa"
+        app:icon="@drawable/ic_assistant_ultimate_alexa"
+        app:iconSpaceReserved="false" />
+
+    <PreferenceCategory
+        android:layout="@layout/preference_material_category"
         android:title="@string/pref_category_appearance"
         app:allowDividerAbove="false" />
 
@@ -154,4 +221,5 @@
         android:title="@string/pref_version"
         app:allowDividerAbove="false"
         app:iconSpaceReserved="false" />
+
 </androidx.preference.PreferenceScreen>

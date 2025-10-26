@@ -21,7 +21,6 @@ object AssistantsMap {
         "kimi_assistant" to KimiAssistant::class.java,
         "manus_assistant" to ManusAssistant::class.java,
         "marusya_assistant" to MarusyaAssistant::class.java,
-        "meta_assistant" to MetaAssistant::class.java,
         "minimax_assistant" to MiniMaxAssistant::class.java,
         "perplexity_assistant" to PerplexityAssistant::class.java,
         "qingyan_assistant" to QingyanAssistant::class.java,
