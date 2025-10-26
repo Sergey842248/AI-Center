@@ -1,4 +1,11 @@
-# SwitchAI – Switch AI Digital Assistant
+<div align="center">
+
+# AI-Center
+
+</div>
+
+![Screenshot](https://raw.githubusercontent.com/Sergey842248/AI-Center/main/app/src/main/res/mipmap-anydpi/ic_launcher.xml)
+
 
 Easily select, start, and manage your preferred AI digital assistants. SwitchAI offers a fresh approach to managing and selecting your preferred AI digital assistants on your Android device.
 
@@ -11,7 +18,7 @@ SwitchAI lets you easily choose your preferred AI assistant for different purpos
 <details>
   <summary>Screenshots</summary>
 
-![Screenshot](https://raw.githubusercontent.com/WSTxda/SwitchAI/main/images/Screenshots.png)
+![Screenshot](https://raw.githubusercontent.com/Sergey842248/AI-Center/main/images/Icon.png)
 
 </details>
 
