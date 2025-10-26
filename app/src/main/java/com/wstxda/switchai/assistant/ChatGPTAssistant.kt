@@ -22,7 +22,7 @@ class ChatGPTAssistant : AssistantActivity() {
 
     private fun createChatGPTIntent() = Intent().apply {
         component = ComponentName(
-            Companion.packageName, "com.openai.voice.assistant.AssistantActivity"
+            Companion.packageName, "com.openai.chatgpt.MainActivity"
         )
     }
 }

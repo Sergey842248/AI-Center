@@ -22,7 +22,7 @@ class PerplexityAssistant : AssistantActivity() {
 
     private fun createPerplexityIntent() = Intent().apply {
         component = ComponentName(
-            Companion.packageName, "ai.perplexity.app.android.assistant.AssistantActivity"
+            Companion.packageName, "ai.perplexity.app.android.ui.main.MainActivity"
         )
     }
 }
