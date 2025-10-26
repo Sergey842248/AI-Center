@@ -49,7 +49,6 @@ object AssistantsMap {
         "kimi_assistant" to "com.moonshot.kimichat",
         "manus_assistant" to "tech.butterfly.app",
         "marusya_assistant" to "ru.mail.search.electroscope",
-        "meta_assistant" to "com.facebook.stella",
         "minimax_assistant" to "com.minimax.ai",
         "perplexity_assistant" to "ai.perplexity.app.android",
         "qingyan_assistant" to "com.zhipuai.qingyan",

@@ -18,7 +18,6 @@
         <item>@string/lumo</item>
         <item>@string/manus</item>
         <item>@string/marusya</item>
-        <item>@string/meta</item>
         <item>@string/minimax</item>
         <item>@string/delphi</item>
         <item>@string/perplexity</item>
@@ -47,7 +46,6 @@
         <item>lumo_assistant</item>
         <item>manus_assistant</item>
         <item>marusya_assistant</item>
-        <item>meta_assistant</item>
         <item>minimax_assistant</item>
         <item>delphi_assistant</item>
         <item>perplexity_assistant</item>
@@ -78,7 +76,6 @@
         <item>lumo_assistant</item>
         <item>manus_assistant</item>
         <item>marusya_assistant</item>
-        <item>meta_assistant</item>
         <item>minimax_assistant</item>
         <item>delphi_assistant</item>
         <item>perplexity_assistant</item>

@@ -61,7 +61,6 @@ Supports a growing list of popular AI assistant apps, replacing the old Plugin-V
 *   **[Lumo](https://play.google.com/store/apps/details?id=me.proton.android.lumo)** by Proton
 *   **[Manus](https://play.google.com/store/apps/details?id=tech.butterfly.app)** by Butterfly Tech
 *   **[Marusya](https://play.google.com/store/apps/details?id=ru.mail.search.electroscope)** by VK
-*   **[Meta AI](https://play.google.com/store/apps/details?id=com.facebook.stella)** by Meta
 *   **[MiniMax](https://play.google.com/store/apps/details?id=com.minimax.ai)** by MiniMax AI
 *   **[oo.ai](https://play.google.com/store/apps/details?id=ai.oo.delphi)** by Open Research
 *   **[Perplexity](https://play.google.com/store/apps/details?id=ai.perplexity.app.android)** by Perplexity AI

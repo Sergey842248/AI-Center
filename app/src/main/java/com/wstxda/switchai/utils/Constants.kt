@@ -33,7 +33,6 @@ object Constants {
     const val LUMO_LAUNCH_SWITCH = "lumo_launch_switch"
     const val MANUS_LAUNCH_SWITCH = "manus_launch_switch"
     const val MARUSYA_LAUNCH_SWITCH = "marusya_launch_switch"
-    const val META_LAUNCH_SWITCH = "meta_launch_switch"
     const val MINIMAX_LAUNCH_SWITCH = "minimax_launch_switch"
     const val DELPHI_LAUNCH_SWITCH = "delphi_launch_switch"
     const val PERPLEXITY_LAUNCH_SWITCH = "perplexity_launch_switch"

@@ -177,7 +177,6 @@ class AssistantSelectorBottomSheet : BaseBottomSheet<FragmentAssistantDialogBind
             "lumo_assistant" -> Constants.LUMO_LAUNCH_SWITCH
             "manus_assistant" -> Constants.MANUS_LAUNCH_SWITCH
             "marusya_assistant" -> Constants.MARUSYA_LAUNCH_SWITCH
-            "meta_assistant" -> Constants.META_LAUNCH_SWITCH
             "minimax_assistant" -> Constants.MINIMAX_LAUNCH_SWITCH
             "delphi_assistant" -> Constants.DELPHI_LAUNCH_SWITCH
             "perplexity_assistant" -> Constants.PERPLEXITY_LAUNCH_SWITCH
