@@ -48,11 +48,8 @@ object Constants {
 
     const val VIEW_TYPE_CATEGORY_HEADER = 0
     const val VIEW_TYPE_ASSISTANT_ITEM = 1
-    // Maximum number of recently used assistants
-    const val CAT_MAX_RECENTLY_USED = 3
     // Category for AssistantSelectorBottomSheet
     const val CAT_PINNED_ASSISTANTS_KEY = "pinned_assistants"
-    const val CAT_RECENTLY_USED_ASSISTANTS_KEY = "recently_used_assistants"
 
     // Widget Material assistant action
 
