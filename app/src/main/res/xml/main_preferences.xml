@@ -198,6 +198,13 @@
         android:key="developer"
         android:layout="@layout/preference_material_top"
         android:summary="@string/pref_developer"
+        android:title="@string/pref_sergey842248"
+        app:iconSpaceReserved="false" />
+
+    <Preference
+        android:key="former_developer"
+        android:layout="@layout/preference_material_top"
+        android:summary="@string/pref_former_developer"
         android:title="@string/pref_wstxda"
         app:iconSpaceReserved="false" />
 
