@@ -57,6 +57,7 @@ class SettingsFragment : PreferenceFragmentCompat() {
     )
 
     private fun observeViewModel() {
+        // Show the setup warning only if assistant is not set up as default
         viewModel.isAssistSetupDone.observe(this) { isDone ->
             findPreference<Preference>(Constants.DIGITAL_ASSISTANT_SETUP_PREF_KEY)?.isVisible =
                 !isDone

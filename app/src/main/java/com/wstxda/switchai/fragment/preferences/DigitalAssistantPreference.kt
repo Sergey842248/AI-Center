@@ -28,12 +28,13 @@ class DigitalAssistantPreference(private val fragment: PreferenceFragmentCompat)
     }
 
     fun updateDigitalAssistantPreferences(isAssistSetupDone: Boolean) {
+        // Show the setup warning only if assistant is not set up as default
         fragment.findPreference<androidx.preference.Preference>(Constants.DIGITAL_ASSISTANT_SETUP_PREF_KEY)?.isVisible =
             !isAssistSetupDone
         fragment.findPreference<androidx.preference.ListPreference>(Constants.DIGITAL_ASSISTANT_SELECT_PREF_KEY)
             ?.apply {
-                isVisible = isAssistSetupDone
-                isEnabled = isAssistSetupDone
+                isVisible = true
+                isEnabled = true
             }
     }
 }
