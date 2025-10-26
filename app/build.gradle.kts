@@ -12,8 +12,8 @@ android {
         applicationId = "com.future.aicenter"
         minSdk = 26
         targetSdk = 36
-        versionCode = 350
-        versionName = "3.5.0"
+        versionCode = 351
+        versionName = "3.5.1"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
