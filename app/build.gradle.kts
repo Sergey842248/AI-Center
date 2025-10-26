@@ -9,11 +9,11 @@ android {
     compileSdk = 36
 
     defaultConfig {
-        applicationId = "com.wstxda.switchai"
+        applicationId = "com.future.aicenter"
         minSdk = 26
         targetSdk = 36
-        versionCode = 330
-        versionName = "3.3"
+        versionCode = 350
+        versionName = "3.5.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }

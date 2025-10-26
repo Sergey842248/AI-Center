@@ -2,7 +2,7 @@
 
     <!--app names-->
 
-    <string name="app_name" translatable="false">SwitchAI</string>
+    <string name="app_name" translatable="false">AI-Center</string>
     <string name="app_settings">Assistant settings</string>
 
     <!--assistant names-->
