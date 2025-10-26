@@ -34,7 +34,8 @@ class AssistantSelectorViewModel(application: Application) : AndroidViewModel(ap
     private val _isLoading = MutableLiveData<Boolean>()
     val isLoading: LiveData<Boolean> = _isLoading
 
-    private val pinnedAssistantKeys = mutableSetOf<String>()
+    private val pinnedAssistantKeys = mutableListOf<String>()
+    private val unpinnedAssistantKeys = mutableListOf<String>()
 
     private val assistantStatePreferences by lazy {
         getApplication<Application>().getSharedPreferences(
@@ -110,27 +111,77 @@ class AssistantSelectorViewModel(application: Application) : AndroidViewModel(ap
             withContext(Dispatchers.IO) {
                 if (isCurrentlyPinned) {
                     pinnedAssistantKeys.remove(assistantKey)
+                    unpinnedAssistantKeys.add(0, assistantKey)
                 } else {
-                    pinnedAssistantKeys.add(assistantKey)
+                    pinnedAssistantKeys.add(0, assistantKey)
+                    unpinnedAssistantKeys.remove(assistantKey)
                 }
-                assistantStatePreferences.edit {
-                    putStringSet(Constants.CAT_PINNED_ASSISTANTS_KEY, pinnedAssistantKeys)
-                }
+                saveStateToPreferences()
             }
 
             val newCategorizedList = buildCategorizedList(updatedAssistantItems)
+            allAssistantItems = newCategorizedList
             _assistantItems.value = newCategorizedList
         }
     }
 
+    fun moveAssistantInList(fromPosition: Int, toPosition: Int) {
+        val currentList = _assistantItems.value?.toMutableList() ?: return
+        if (fromPosition < 0 || fromPosition >= currentList.size || toPosition < 0 || toPosition >= currentList.size) {
+            return
+        }
 
+        val movedItem = currentList.removeAt(fromPosition)
+        currentList.add(toPosition, movedItem)
+
+        _assistantItems.value = currentList
+    }
+
+    fun saveAssistantOrder() {
+        viewModelScope.launch(Dispatchers.IO) {
+            val currentItems =
+                _assistantItems.value?.filterIsInstance<AssistantSelectorRecyclerView.AssistantSelector>()
+                    ?: return@launch
+
+            pinnedAssistantKeys.clear()
+            unpinnedAssistantKeys.clear()
+
+            currentItems.forEach {
+                if (it.assistantItem.isPinned) {
+                    pinnedAssistantKeys.add(it.assistantItem.key)
+                } else {
+                    unpinnedAssistantKeys.add(it.assistantItem.key)
+                }
+            }
+            saveStateToPreferences()
+        }
+    }
+
+    private fun saveStateToPreferences() {
+        assistantStatePreferences.edit {
+            putString(Constants.PINNED_ASSISTANTS_ORDER_KEY, pinnedAssistantKeys.joinToString(","))
+            putString(
+                Constants.UNPINNED_ASSISTANTS_ORDER_KEY,
+                unpinnedAssistantKeys.joinToString(",")
+            )
+        }
+    }
 
     private fun loadStateFromPreferences() {
-        val loadedPinnedKeys = assistantStatePreferences.getStringSet(
-            Constants.CAT_PINNED_ASSISTANTS_KEY, emptySet()
-        ) ?: emptySet()
+        val pinnedOrder =
+            assistantStatePreferences.getString(Constants.PINNED_ASSISTANTS_ORDER_KEY, "") ?: ""
+        val unpinnedOrder =
+            assistantStatePreferences.getString(Constants.UNPINNED_ASSISTANTS_ORDER_KEY, "") ?: ""
+
         pinnedAssistantKeys.clear()
-        pinnedAssistantKeys.addAll(loadedPinnedKeys)
+        if (pinnedOrder.isNotEmpty()) {
+            pinnedAssistantKeys.addAll(pinnedOrder.split(','))
+        }
+
+        unpinnedAssistantKeys.clear()
+        if (unpinnedOrder.isNotEmpty()) {
+            unpinnedAssistantKeys.addAll(unpinnedOrder.split(','))
+        }
     }
 
     private fun getVisibleAssistantDetails(installedKeys: Set<String>): List<AssistantItem> {
@@ -157,24 +208,33 @@ class AssistantSelectorViewModel(application: Application) : AndroidViewModel(ap
     private fun buildCategorizedList(assistants: List<AssistantItem>): List<AssistantSelectorRecyclerView> {
         val context = getApplication<Application>().applicationContext
         val (installedAssistants, notInstalledAssistants) = assistants.partition { it.isInstalled }
-        return buildList {
-            val groupedByPinned = installedAssistants.groupBy { it.isPinned }
-            val pinnedItems = (groupedByPinned[true] ?: emptyList()).sortedBy { it.name }
+
+        val assistantMap = assistants.associateBy { it.key }
+
+        val orderedPinned =
+            pinnedAssistantKeys.mapNotNull { assistantMap[it] }
+                .map { AssistantSelectorRecyclerView.AssistantSelector(it.copy(isPinned = true)) }
+        val orderedUnpinned =
+            unpinnedAssistantKeys.mapNotNull { assistantMap[it] }
+                .map { AssistantSelectorRecyclerView.AssistantSelector(it.copy(isPinned = false)) }
+
+        val remainingInstalled =
+            installedAssistants.filter { it.key !in pinnedAssistantKeys && it.key !in unpinnedAssistantKeys }
+                .sortedBy { it.name }
                 .map { AssistantSelectorRecyclerView.AssistantSelector(it) }
 
-            val otherItems = groupedByPinned[false] ?: emptyList()
-
-            if (pinnedItems.isNotEmpty()) {
+        return buildList {
+            if (orderedPinned.isNotEmpty()) {
                 add(AssistantSelectorRecyclerView.CategoryHeader(context.getString(R.string.assistant_category_pin)))
-                addAll(pinnedItems)
+                addAll(orderedPinned)
             }
 
-            if (otherItems.isNotEmpty()) {
+            val allUnpinned = orderedUnpinned + remainingInstalled
+            if (allUnpinned.isNotEmpty()) {
                 add(AssistantSelectorRecyclerView.CategoryHeader(context.getString(R.string.assistant_category_all)))
-                val sortedOthers = otherItems.sortedBy { it.name }
-                    .map { AssistantSelectorRecyclerView.AssistantSelector(it) }
-                addAll(sortedOthers)
+                addAll(allUnpinned)
             }
+
             if (notInstalledAssistants.isNotEmpty()) {
                 add(AssistantSelectorRecyclerView.CategoryHeader(context.getString(R.string.assistant_category_not_installed)))
                 val sortedNotInstalled = notInstalledAssistants.sortedBy { it.name }

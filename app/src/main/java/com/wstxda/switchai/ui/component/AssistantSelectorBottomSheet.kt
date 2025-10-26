@@ -11,12 +11,14 @@ import androidx.core.view.isInvisible
 import androidx.core.view.isVisible
 import androidx.core.widget.doOnTextChanged
 import androidx.fragment.app.viewModels
+import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.wstxda.switchai.R
 import com.wstxda.switchai.databinding.FragmentAssistantDialogBinding
 import com.wstxda.switchai.logic.PreferenceHelper
 import com.wstxda.switchai.ui.adapter.AssistantSelectorAdapter
+import com.wstxda.switchai.ui.viewholder.AssistantSelectorItemViewHolder
 import com.wstxda.switchai.utils.AssistantsMap
 import com.wstxda.switchai.utils.Constants
 import com.wstxda.switchai.viewmodel.AssistantSelectorViewModel
@@ -69,6 +71,44 @@ class AssistantSelectorBottomSheet : BaseBottomSheet<FragmentAssistantDialogBind
             layoutManager = LinearLayoutManager(context)
             adapter = assistantSelectorAdapter
         }
+
+        val itemTouchHelper = ItemTouchHelper(object : ItemTouchHelper.SimpleCallback(
+            ItemTouchHelper.UP or ItemTouchHelper.DOWN, 0
+        ) {
+            override fun getMovementFlags(
+                recyclerView: RecyclerView,
+                viewHolder: RecyclerView.ViewHolder
+            ): Int {
+                val dragFlags = if (viewHolder is AssistantSelectorItemViewHolder) {
+                    ItemTouchHelper.UP or ItemTouchHelper.DOWN
+                } else {
+                    0
+                }
+                return makeMovementFlags(dragFlags, 0)
+            }
+
+            override fun onMove(
+                recyclerView: RecyclerView,
+                viewHolder: RecyclerView.ViewHolder,
+                target: RecyclerView.ViewHolder
+            ): Boolean {
+                val fromPosition = viewHolder.adapterPosition
+                val toPosition = target.adapterPosition
+                viewModel.moveAssistantInList(fromPosition, toPosition)
+                return true
+            }
+
+            override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {}
+
+            override fun clearView(
+                recyclerView: RecyclerView,
+                viewHolder: RecyclerView.ViewHolder
+            ) {
+                super.clearView(recyclerView, viewHolder)
+                viewModel.saveAssistantOrder()
+            }
+        })
+        itemTouchHelper.attachToRecyclerView(binding.assistantsRecyclerView)
     }
 
     private fun setupObservers() {

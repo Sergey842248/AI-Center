@@ -76,8 +76,9 @@ object Constants {
 
     const val VIEW_TYPE_CATEGORY_HEADER = 0
     const val VIEW_TYPE_ASSISTANT_ITEM = 1
-    // Category for AssistantSelectorBottomSheet
-    const val CAT_PINNED_ASSISTANTS_KEY = "pinned_assistants"
+    // Order for AssistantSelectorBottomSheet
+    const val PINNED_ASSISTANTS_ORDER_KEY = "pinned_assistants_order"
+    const val UNPINNED_ASSISTANTS_ORDER_KEY = "unpinned_assistants_order"
 
     // Widget Material assistant action
 
