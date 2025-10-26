@@ -10,7 +10,7 @@ Easily select, start, and manage your preferred AI digital assistants. SwitchAI 
 
 [![GitHub Actions Status](https://img.shields.io/github/actions/workflow/status/Sergey842248/AI-Center/.github%2Fworkflows%2Fandroid.yml?style=for-the-badge&logo=github-actions&labelColor=21262D&color=3FB950)](https://github.com/Sergey842248/AI-Center/actions)
 [![Platform](https://img.shields.io/badge/android-platform?style=for-the-badge&label=platform&labelColor=21262d&color=6e7681)](https://www.android.com)
-[![Release](https://img.shields.io/github/v/release/Sergey842248/AI-Center?display_name=tag&style=for-the-badge&logo=github&labelColor=21262d&color=1f6feb)](https://github.com/WSTxda/SwitchAI/releases/latest)
+[![Release](https://img.shields.io/github/v/release/Sergey842248/AI-Center?display_name=tag&style=for-the-badge&logo=github&labelColor=21262d&color=1f6feb)](https://github.com/Sergey842248/AI-Center/releases/latest)
 
 SwitchAI lets you easily choose your preferred AI assistant for different purposes. With a single tap, select an AI to use, or set one as the default assistant for your device’s digital assistant feature. Increase productivity by easily switching between AI assistants for different tasks.
 
