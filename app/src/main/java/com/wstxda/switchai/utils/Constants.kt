@@ -86,5 +86,5 @@ object Constants {
 
     // GitHub API releases URL
 
-    const val GITHUB_RELEASE_URL = "https://api.github.com/repos/WSTxda/SwitchAI/releases/latest"
+    const val GITHUB_RELEASE_URL = "https://api.github.com/repos/Sergey842248/AI-Center/releases/latest"
 }
