@@ -241,6 +241,8 @@ class AssistantSelectorViewModel(application: Application) : AndroidViewModel(ap
                     .map { AssistantSelectorRecyclerView.AssistantSelector(it) }
                 addAll(sortedNotInstalled)
             }
+
+            add(AssistantSelectorRecyclerView.SettingsButton)
         }
     }
 

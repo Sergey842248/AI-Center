@@ -104,6 +104,7 @@ class SettingsFragment : PreferenceFragmentCompat() {
         setupWidgetPreference()
         setupLibraryPreference()
         setupLinkPreferences()
+        setupOpenAppSettingsPreference()
     }
 
     private fun setupInitialVisibility() {
@@ -174,6 +175,16 @@ class SettingsFragment : PreferenceFragmentCompat() {
                 startActivity(Intent(Intent.ACTION_VIEW, url.toUri()))
                 true
             }
+        }
+    }
+
+    private fun setupOpenAppSettingsPreference() {
+        findPreference<Preference>(Constants.OPEN_APP_SETTINGS_PREF_KEY)?.setOnPreferenceClickListener {
+            val intent = Intent(android.provider.Settings.ACTION_APPLICATION_DETAILS_SETTINGS).apply {
+                data = "package:${requireContext().packageName}".toUri()
+            }
+            startActivity(intent)
+            true
         }
     }
 }

@@ -3,7 +3,7 @@
     <!--app names-->
 
     <string name="app_name" translatable="false">AI-Center</string>
-    <string name="app_settings">Assistant settings</string>
+    <string name="app_settings">Settings</string>
 
     <!--assistant names-->
 
@@ -173,4 +173,8 @@
     <string name="widget_assistant_invisible_description">An invisible widget to access your assistant</string>
     <!--pinning widget-->
     <string name="widget_launcher_not_supported">Your launcher does not support widget pinning</string>
+
+    <!--open app settings-->
+    <string name="pref_open_app_settings">Open app settings</string>
+    <string name="pref_open_app_settings_summary">Open the main application settings</string>
 </resources>

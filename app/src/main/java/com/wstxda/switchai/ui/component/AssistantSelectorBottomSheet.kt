@@ -15,6 +15,7 @@ import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.wstxda.switchai.R
+import com.wstxda.switchai.activity.MainActivity
 import com.wstxda.switchai.databinding.FragmentAssistantDialogBinding
 import com.wstxda.switchai.logic.PreferenceHelper
 import com.wstxda.switchai.ui.adapter.AssistantSelectorAdapter
@@ -65,6 +66,9 @@ class AssistantSelectorBottomSheet : BaseBottomSheet<FragmentAssistantDialogBind
             dismiss()
         }, onPinClicked = { assistantKey ->
             viewModel.togglePinAssistant(assistantKey)
+        }, onSettingsButtonClicked = {
+            startActivity(Intent(requireContext(), MainActivity::class.java))
+            dismiss()
         })
 
         binding.assistantsRecyclerView.apply {

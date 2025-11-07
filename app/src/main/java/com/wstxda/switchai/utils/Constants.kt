@@ -16,6 +16,7 @@ object Constants {
     const val ASSISTANT_ROOT_PREF_KEY = "assistant_root"
     const val LIBRARY_PREF_KEY = "library"
     const val THEME_PREF_KEY = "select_theme"
+    const val OPEN_APP_SETTINGS_PREF_KEY = "open_app_settings"
 
     // AI Launch Switch Keys
     const val ALEXA_LAUNCH_SWITCH = "alexa_launch_switch"
@@ -75,6 +76,7 @@ object Constants {
 
     const val VIEW_TYPE_CATEGORY_HEADER = 0
     const val VIEW_TYPE_ASSISTANT_ITEM = 1
+    const val VIEW_TYPE_SETTINGS_BUTTON = 2
     // Order for AssistantSelectorBottomSheet
     const val PINNED_ASSISTANTS_ORDER_KEY = "pinned_assistants_order"
     const val UNPINNED_ASSISTANTS_ORDER_KEY = "unpinned_assistants_order"
