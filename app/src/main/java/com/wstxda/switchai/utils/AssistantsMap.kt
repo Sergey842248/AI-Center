@@ -1,6 +1,7 @@
 package com.wstxda.switchai.utils
 
 import com.wstxda.switchai.assistant.*
+import com.wstxda.switchai.assistant.HuggingAssist
 
 object AssistantsMap {
 
@@ -16,6 +17,7 @@ object AssistantsMap {
         "gemini_assistant" to GeminiAssistant::class.java,
         "grok_assistant" to GrokAssistant::class.java,
         "home_assistant" to HomeAssistant::class.java,
+        "hugging_assistant" to HuggingAssist::class.java,
         "le_chat_assistant" to LeChatAssistant::class.java,
         "lumo_assistant" to LumoAssistant::class.java,
         "kimi_assistant" to KimiAssistant::class.java,
@@ -44,6 +46,7 @@ object AssistantsMap {
         "gemini_assistant" to "com.google.android.apps.bard",
         "grok_assistant" to "ai.x.grok",
         "home_assistant" to "io.homeassistant.companion.android",
+        "hugging_assistant" to "org.woheller69.hugassist",
         "le_chat_assistant" to "ai.mistral.chat",
         "lumo_assistant" to "me.proton.android.lumo",
         "kimi_assistant" to "com.moonshot.kimichat",

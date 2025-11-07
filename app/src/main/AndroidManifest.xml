@@ -151,6 +151,15 @@
             android:noHistory="true"
             android:theme="@style/AppTheme.Transparent" />
 
+        <activity
+            android:name=".assistant.HuggingAssist"
+            android:excludeFromRecents="true"
+            android:exported="false"
+            android:label="@string/hugging"
+            android:launchMode="singleTop"
+            android:noHistory="true"
+            android:theme="@style/AppTheme.Transparent" />
+
 
         <activity
             android:name=".assistant.KimiAssistant"

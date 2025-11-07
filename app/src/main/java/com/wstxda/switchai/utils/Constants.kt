@@ -29,6 +29,7 @@ object Constants {
     const val GEMINI_LAUNCH_SWITCH = "gemini_launch_switch"
     const val GROK_LAUNCH_SWITCH = "grok_launch_switch"
     const val HOME_LAUNCH_SWITCH = "home_launch_switch"
+    const val HUGGING_LAUNCH_SWITCH = "hugging_launch_switch"
     const val KIMI_LAUNCH_SWITCH = "kimi_launch_switch"
     const val LE_CHAT_LAUNCH_SWITCH = "le_chat_launch_switch"
     const val LUMO_LAUNCH_SWITCH = "lumo_launch_switch"

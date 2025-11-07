@@ -13,6 +13,7 @@
         <item>@string/gemini</item>
         <item>@string/grok</item>
         <item>@string/home</item>
+        <item>@string/hugging</item>
         <item>@string/kimi</item>
         <item>@string/le_chat</item>
         <item>@string/lumo</item>
@@ -41,6 +42,7 @@
         <item>gemini_assistant</item>
         <item>grok_assistant</item>
         <item>home_assistant</item>
+        <item>hugging_assistant</item>
         <item>kimi_assistant</item>
         <item>le_chat_assistant</item>
         <item>lumo_assistant</item>
@@ -71,6 +73,7 @@
         <item>gemini_assistant</item>
         <item>grok_assistant</item>
         <item>home_assistant</item>
+        <item>hugging_assistant</item>
         <item>kimi_assistant</item>
         <item>le_chat_assistant</item>
         <item>lumo_assistant</item>
