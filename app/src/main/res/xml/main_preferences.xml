@@ -229,11 +229,5 @@
         app:allowDividerAbove="false"
         app:iconSpaceReserved="false" />
 
-    <Preference
-        android:key="open_app_settings"
-        android:layout="@layout/preference_material_single"
-        android:summary="@string/pref_open_app_settings_summary"
-        android:title="@string/pref_open_app_settings"
-        app:iconSpaceReserved="false" />
 
 </androidx.preference.PreferenceScreen>
